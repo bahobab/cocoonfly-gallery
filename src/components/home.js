@@ -1,21 +1,85 @@
 import React from 'react';
-import {Container, Grid} from 'semantic-ui-react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Image } from 'gatsby-image';
+import {
+  Container,
+  Grid,
+  Header,
+  Message,
+  MessageHeader,
+  MessageContent,
+  Segment,
+} from 'semantic-ui-react';
 
-import Hero from '../components/hero'
-// import Events from '../components/events';
-// import Artists from '../components/artists';
-// import Gallery from '../components/'
+import Hero from './hero';
+import Events from './events';
+import Artists from './artists';
+import Gallery from './gallery';
+
+export const query = graphql`
+  {
+    events: allStrapiEvent(filter: { featured: { eq: true } }) {
+      nodes {
+        description
+        date
+        location
+        title
+        slug
+        featured
+        id
+      }
+    }
+  }
+`;
 
 function Home() {
+  const data = useStaticQuery(query);
   return (
-    <Grid>
+    <Grid style={{ maxWidth: '100vw' }}>
       <Hero />
-      <h2 id='info'>Who we are</h2>
-      <h2 id='events'>Events Section</h2>
-      <h2 id='artists'>Artists Section</h2>
-      <h2 id='gallery'>Gallery Section</h2>
+      <Segment>
+        <Message>
+          <MessageHeader>
+            <Header as="h2" id="info">
+              Who we are
+            </Header>
+          </MessageHeader>
+          <MessageContent>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </MessageContent>
+        </Message>
+      </Segment>
+
+      <Segment>
+        <Header as="h2" id="info">
+          Cocoonfly Latest Events
+        </Header>
+        <Events events={data.events.nodes} />
+      </Segment>
+
+      <Segment style={{ width: '100%' }}>
+        <Header as="h2" id="artists">
+          Cocoonfly Featured Artists
+        </Header>
+        <Artists />
+      </Segment>
+
+      <Segment style={{ width: '100%' }}>
+        <Header as="h2" id="gallery">
+          Featured Gallery Work
+        </Header>
+        <Gallery />
+      </Segment>
     </Grid>
-    )
+  );
 }
 
 export default Home;
