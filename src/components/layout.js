@@ -5,14 +5,15 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
-import { Grid, Container } from "semantic-ui-react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Grid, Container } from 'semantic-ui-react';
 
-import Header from "./header";
+import Header from './header';
+import Footer from "./footer";
 // import "./layout.css"
-import "./layout.scss";
+import './layout.scss';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -30,8 +31,9 @@ const Layout = ({ children }) => {
       <div className="app">
         <Header />
         <Grid>
-          <main style={{ maxWidth: "100%" }}>{children}</main>
+          <main style={{ maxWidth: '100%' }}>{children}</main>
         </Grid>
+        <Footer />
       </div>
       {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
 

@@ -1,20 +1,20 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { Image } from "gatsby-image";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import {
-  Container,
   Grid,
   Header,
   Message,
   MessageHeader,
   MessageContent,
   Segment,
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
 
-import Hero from "./hero";
-import Events from "./events";
-import Artists from "./artists";
-import Gallery from "./gallery";
+import Hero from './hero';
+import Events from './events';
+import Artists from './artists';
+import Gallery from './gallery';
+
+import "./home.scss";
 
 export const query = graphql`
   {
@@ -55,22 +55,42 @@ export const query = graphql`
         }
       }
     }
+
+    gallery: allCloudinaryMedia {
+      edges {
+        node {
+          id
+          secure_url
+          resource_type
+        }
+      }
+    }
   }
 `;
 
 function Home() {
   const data = useStaticQuery(query);
   return (
-    <Grid style={{ maxWidth: "100vw" }}>
+    <Grid style={{ maxWidth: '100vw' }}>
       <Hero />
       <Segment>
         <Message>
           <MessageHeader>
-            <Header as="h2" id="info">
+            <Header
+              as="h2"
+              id="info"
+              style={{
+                backgroundColor: 'teal',
+                color: '#ffffff',
+                padding: '5px 0',
+                textAlign: 'center',
+                borderRadius: '3px',
+              }}
+            >
               Who we are
             </Header>
           </MessageHeader>
-          <MessageContent>
+          <MessageContent style={{ marginTop: "10px" }}>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -84,25 +104,55 @@ function Home() {
         </Message>
       </Segment>
 
-      <Segment style={{ width: "100%" }}>
-        <Header as="h2" id="info">
+      <Segment className="homeSection">
+        <Header
+          as="h2"
+          id="info"
+          style={{
+            backgroundColor: 'teal',
+            color: '#ffffff',
+            padding: '5px 0',
+            textAlign: 'center',
+            borderRadius: '3px',
+          }}
+        >
           Cocoonfly Latest Events
         </Header>
         <Events events={data.events.nodes} />
       </Segment>
 
-      <Segment style={{ width: "100%" }}>
-        <Header as="h2" id="artists">
+      <Segment className="homeSection">
+        <Header
+          as="h2"
+          id="artists"
+          style={{
+            backgroundColor: "teal",
+            color: "#ffffff",
+            padding: "5px 0",
+            textAlign: "center",
+            borderRadius: "3px",
+          }}
+        >
           Cocoonfly Featured Artists
         </Header>
         <Artists artists={data.artists.nodes} />
       </Segment>
 
-      <Segment style={{ width: "100%" }}>
-        <Header as="h2" id="gallery">
+      <Segment className="homeSection">
+        <Header
+          as="h2"
+          id="gallery"
+          style={{
+            backgroundColor: "teal",
+            color: "#ffffff",
+            padding: "5px 0",
+            textAlign: "center",
+            borderRadius: "3px",
+          }}
+        >
           Sample Gallery Work
         </Header>
-        <Gallery />
+        <Gallery images={data.gallery.edges} />
       </Segment>
     </Grid>
   );
