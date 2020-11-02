@@ -1,34 +1,40 @@
-import React from "react";
-import { Link } from "gatsby";
-import { Image } from "gatsby-image";
+import React from 'react';
+import { Link } from 'gatsby';
+import Image from 'gatsby-image';
 import {
   Card,
   Header,
   Message,
   MessageContent,
   MessageHeader,
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
 
-import "./artist.scss";
+import './artist.scss';
 
 function Artist({ artist }) {
   const { name, bio, slug } = artist;
   const artistLink = <Link to={`/artists/${slug}`}>See artist's work</Link>;
   // painting image array
   return (
-    <Message style={{ width: '100%' }}>
+    <Message style={{ width: "100%" }}>
       <MessageHeader>
         <Header as="h3">{name}</Header>
       </MessageHeader>
       <MessageContent>
+        <Card>
+          <Image fluid={artist.artistImg.childImageSharp.fluid} />
+          <Card.Content>
+            <Card.Description>{artist.bio}</Card.Description>
+          </Card.Content>
+          <Card.Content>{artistLink}</Card.Content>
+        </Card>
         {/* {bio} */}
-        <Card
+        {/* <Card
           image="https://res.cloudinary.com/krikitue/image/upload/v1604162578/user_vzmyfn.svg"
-          // header={name}
           description={bio}
           extra={artistLink}
-          style={{ width: '100%', textAlign: "center" }}
-        />
+          style={{ width: "100%", textAlign: 'center' }}
+        /> */}
       </MessageContent>
     </Message>
   );

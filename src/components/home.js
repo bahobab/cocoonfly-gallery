@@ -1,6 +1,6 @@
-import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Image } from 'gatsby-image';
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import { Image } from "gatsby-image";
 import {
   Container,
   Grid,
@@ -9,12 +9,12 @@ import {
   MessageHeader,
   MessageContent,
   Segment,
-} from 'semantic-ui-react';
+} from "semantic-ui-react";
 
-import Hero from './hero';
-import Events from './events';
-import Artists from './artists';
-import Gallery from './gallery';
+import Hero from "./hero";
+import Events from "./events";
+import Artists from "./artists";
+import Gallery from "./gallery";
 
 export const query = graphql`
   {
@@ -27,6 +27,32 @@ export const query = graphql`
         slug
         featured
         id
+        media {
+          featured
+          mediaUrl {
+            childImageSharp {
+              fixed(width: 960) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
+      }
+    }
+
+    artists: allStrapiArtist {
+      nodes {
+        featured
+        name
+        slug
+        bio
+        artistImg {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
@@ -35,7 +61,7 @@ export const query = graphql`
 function Home() {
   const data = useStaticQuery(query);
   return (
-    <Grid style={{ maxWidth: '100vw' }}>
+    <Grid style={{ maxWidth: "100vw" }}>
       <Hero />
       <Segment>
         <Message>
@@ -58,23 +84,23 @@ function Home() {
         </Message>
       </Segment>
 
-      <Segment>
+      <Segment style={{ width: "100%" }}>
         <Header as="h2" id="info">
           Cocoonfly Latest Events
         </Header>
         <Events events={data.events.nodes} />
       </Segment>
 
-      <Segment style={{ width: '100%' }}>
+      <Segment style={{ width: "100%" }}>
         <Header as="h2" id="artists">
           Cocoonfly Featured Artists
         </Header>
-        <Artists />
+        <Artists artists={data.artists.nodes} />
       </Segment>
 
-      <Segment style={{ width: '100%' }}>
+      <Segment style={{ width: "100%" }}>
         <Header as="h2" id="gallery">
-          Featured Gallery Work
+          Sample Gallery Work
         </Header>
         <Gallery />
       </Segment>

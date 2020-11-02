@@ -1,9 +1,10 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { Container, Header } from 'semantic-ui-react';
 
 import Artist from './artist';
 
-const artists = [
+const artists1 = [
   {
     id: 0,
     name: 'Polo',
@@ -22,8 +23,8 @@ const artists = [
   },
 ];
 
-function Artists(props) {
-  return artists.map((artist) => <Artist key={artist.id} artist={artist} />);
+function Artists({ artists }) {
+  return artists.map((artist) => <Artist key={artist.slug} artist={artist} />);
 }
 
 export default Artists;
