@@ -3,9 +3,21 @@
   margin: 0;
   padding: 0 !important;
 
+  .ccfMessage {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 10;
+  backgroundColor: rgba(255, 255, 255, 0.7);
+  }
+
   .cta {
     position: absolute;
-    left: 50px;
-    top: 50px;
+    right: 20px;
+    bottom: 20px;
   }
+}
+
+.heroMessage {
 }

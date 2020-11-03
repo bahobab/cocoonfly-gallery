@@ -1,6 +1,8 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
+
 import {
+  Button,
   Grid,
   Header,
   Message,
@@ -56,24 +58,55 @@ export const query = graphql`
       }
     }
 
-    gallery: allCloudinaryMedia {
-      edges {
-        node {
-          id
-          secure_url
-          resource_type
+    galleryArtists: allStrapiArtist(
+      filter: { art_items: { elemMatch: { featured: { eq: true } } } }
+    ) {
+      nodes {
+        id
+        name
+        artistImg {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        works: art_items {
+          category
+          description
+          imgUrl {
+            childImageSharp {
+              fixed(width: 960) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+          title
+          forSale
+          featured
         }
       }
     }
   }
 `;
 
+// gallery: allCloudinaryMedia {
+//   edges {
+//     node {
+//       id
+//       secure_url
+//       resource_type
+//     }
+//   }
+// }
+
 function Home() {
   const data = useStaticQuery(query);
+  const galleryArtists = data.galleryArtists.nodes;
   return (
     <Grid style={{ maxWidth: '100vw' }}>
       <Hero />
-      <Segment>
+      <Segment className="homeSection">
         <Message>
           <MessageHeader>
             <Header
@@ -119,6 +152,7 @@ function Home() {
           Cocoonfly Latest Events
         </Header>
         <Events events={data.events.nodes} />
+        <Button as={Link} to="/events" content="See All Events" primary />
       </Segment>
 
       <Segment className="homeSection">
@@ -135,7 +169,8 @@ function Home() {
         >
           Cocoonfly Featured Artists
         </Header>
-        <Artists artists={data.artists.nodes} />
+        <Artists artists={galleryArtists} />
+        <Button as={Link} to="/artists" content="See All Artists" primary />
       </Segment>
 
       <Segment className="homeSection">
@@ -152,7 +187,8 @@ function Home() {
         >
           Sample Gallery Work
         </Header>
-        <Gallery images={data.gallery.edges} />
+        <Gallery artists={galleryArtists} />
+        <Button as={Link} to="/gallery" content="See Full Gallery" primary />
       </Segment>
     </Grid>
   );

@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "gatsby";
-import { Menu } from "semantic-ui-react";
+import React from 'react';
+import { Link } from 'gatsby';
+import { Menu } from 'semantic-ui-react';
 
 function Header() {
   return (
-    <Menu fixed="top" inverted style={{ maxWidth: "100%" }}>
+    <Menu fixed="top" inverted style={{ maxWidth: '100vw' }}>
       <Menu.Item as={Link} to="/">
         Cocoonfly
       </Menu.Item>

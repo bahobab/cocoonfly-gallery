@@ -28,13 +28,14 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className="app">
+      <div className="app" style={{ maxWidth: '100vw' }}>
         <Header />
         <Grid>
           <main style={{ maxWidth: '100%' }}>{children}</main>
         </Grid>
-        <Footer />
+        <Footer style={{ width: '100%' }} />
       </div>
+
       {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
 
       {/* <div

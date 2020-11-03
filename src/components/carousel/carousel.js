@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
-import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
+import React, { useCallback, useState } from 'react';
+import Gallery from 'react-photo-gallery';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 
 function carousel({ photos }) {
   const [currentImage, setCurrentImage] = useState(0);
@@ -16,17 +16,21 @@ function carousel({ photos }) {
   }
 
   return (
-    <div>
-      <Gallery photos={photos} onClick={opelLightBox} />
+    <div tyle={{ width: '100%' }}>
+      <Gallery
+        photos={photos}
+        onClick={opelLightBox}
+        tyle={{ width: "100%" }}
+      />
       <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeModal}>
             <Carousel
               currentIndex={currentImage}
-              views={photos.map(photo => ({
+              views={photos.map((photo) => ({
                 ...photo,
                 srcset: photo.srcset,
-                caption: photo.title || 'caption',
+                caption: photo.title || "caption",
               }))}
             />
           </Modal>
@@ -59,12 +63,12 @@ function ratio(node, index) {
   const x = node.mediaUrl.childImageSharp.fixed.width;
   const y = node.mediaUrl.childImageSharp.fixed.height;
   const c = gcd(x, y);
-  const aspect = "" + x / c + ":" + y / c;
-  return aspect.split(":")[index];
+  const aspect = '' + x / c + ':' + y / c;
+  return aspect.split(':')[index];
 }
 // Photo data structure transformer
 export function photoMapper(edges) {
-  return edges.map(image => ({
+  return edges.map((image) => ({
     src: image.mediaUrl.childImageSharp.fixed.src,
     // src: document.node.url.childImageSharp.fixed.src,
     srcSet: image.mediaUrl.childImageSharp.fixed.srcSet,

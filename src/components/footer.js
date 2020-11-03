@@ -5,15 +5,15 @@ import {
 
 function Footer() {
   return (
-    <footer>
+    <footer style={{ width: "100%", marginTop: "20px" }}>
       {/* <Container style={{ width: '100%' }}> */}
-      <Segment style={{ width: "100%", marginTop: "20px" }}>
+      <Segment>
         <Message
           icon
           style={{
             color: 'white',
             backgroundColor: 'teal',
-            maxWidth: "100%",
+            width: "100%",
             display: 'flex',
             flexWrap: "wrap",
             justifyContent: 'space-around',

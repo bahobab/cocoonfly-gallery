@@ -9,12 +9,9 @@ import {
   MessageHeader,
 } from 'semantic-ui-react';
 
-import './artist.scss';
-
 function Artist({ artist }) {
   const { name, bio, slug } = artist;
   const artistLink = <Link to={`/artists/${slug}`}>See artist's work</Link>;
-  // painting image array
   return (
     <Message style={{ width: "100%" }}>
       <MessageHeader>

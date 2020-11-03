@@ -1,34 +1,51 @@
-import React from "react";
-import {graphql} from 'gatsby';
+import React from 'react';
+import { graphql, useStaticQuery } from "gatsby";
+import { Header } from 'semantic-ui-react';
 
-// import {Artists, Layout, Seo} from '../components';
-import Events from "../components/events";
-import Layout from "../components/layout";
-import Seo from "../components/seo";
+import Events from '../components/events';
+import Layout from '../components/layout';
+import Seo from '../components/seo';
 
 export const query = graphql`
   {
-    event: allStrapiEvent(filter: {}) {
+    events: allStrapiEvent {
       nodes {
         date(formatString: "")
         id
         description
         title
         location
-        slug
+        media {
+          mediaUrl {
+            childImageSharp {
+              fixed(width: 960) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
       }
     }
   }
 `;
 
-function EventsPage({data}) {
-  console.log('>>>>', data)
-  const events = data.event.nodes;
+function EventsPage() {
+  const data = useStaticQuery(query);
   return (
     <Layout>
-      <Seo title="cocoonfly.com events" />
-      <h1>All Cocoonfly Events</h1>
-      <Events events={events}/>
+      <Seo title="cocoonfly.com artists" />
+      <Header
+        as="h1"
+        content="All Cocoonfly Events"
+        style={{
+          textAlign: "center",
+          color: '#fff',
+          backgroundColor: 'teal',
+          marginTop: '12px',
+          borderRadius: '3px',
+        }}
+      />
+      <Events events={data.events.nodes} />
     </Layout>
   );
 }

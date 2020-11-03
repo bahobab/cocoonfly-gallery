@@ -1,26 +1,41 @@
 import React from "react";
-import { Message, MessageContent, Header } from "semantic-ui-react";
+import Image from 'gatsby-image';
+import { Container, Segment } from "semantic-ui-react";
 
 import Carousel, { photoMapper } from './carousel/carousel';
 
-function Gallery({ images }) {
-  // console.log(">>>nodes:", images);
-  const photos = images.map(image => (
-    <figure key={image.node.id}>
-      <img
-        src={image.node.secure_url}
-        alt="gallery sample"
-        style={{ width: "100%" }}
-      />
-      <figcaption>Gallery Sample Image</figcaption>
-    </figure>
-  ));
+function Gallery({ artists }) {
+  console.log(">>>nodes:", artists);
 
-  return (
-    <Message>
-      <MessageContent>{photos}</MessageContent>
-    </Message>
-  );
+  const artistGallery = artists.map(artist => {
+    const works = artist.works.map(work => {
+      const photos = { ...work, mediaUrl: work.imgUrl };
+      delete photos.imgUrl;
+      return photos;
+    });
+
+    const photos = photoMapper(works);
+
+    return (
+      <>
+        <figure key={artist.id}>
+          <Image
+            key={artist.id}
+            fluid={artist.artistImg.childImageSharp.fluid}
+            // src={image.node.secure_url}
+            // alt="gallery sample"
+            // style={{ width: "100%" }}
+          />
+          <figcaption>{artist.name}</figcaption>
+        </figure>
+        <Segment>
+          <Carousel photos={photos} />
+        </Segment>
+      </>
+    );
+  });
+
+  return <Container>{artistGallery}</Container>;
 }
 
 export default Gallery;

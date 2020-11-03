@@ -1,33 +1,40 @@
-import React from 'react';
+import React from "react";
+import { Link } from "gatsby";
 import {
   Container,
   Image,
   Dimmer,
   Segment,
   Button,
-  A,
-} from 'semantic-ui-react';
+  Message,
+} from "semantic-ui-react";
 
-import './hero.scss';
+import "./hero.scss";
 
 function Hero() {
   return (
     <Container className="heroSection" as="section">
+      <Message className="ccfMessage">
+        <Message.Content
+          className="heroMessage"
+          content="qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt"
+        />
+      </Message>
       <Button
         className="cta"
-        as={A}
+        as={Link}
         href="#info"
-        style={{ zIndex: '100' }}
-        onClick={() => console.log('go to info')}
+        style={{ zIndex: "100" }}
+        onClick={() => console.log("go to info")}
       >
         Click Here
       </Button>
       <Dimmer.Dimmable dimmed>
-        <Dimmer simple style={{ opacity: '0.5' }} />
+        <Dimmer simple style={{ opacity: "0.5" }} />
         <Image
           src="https://res.cloudinary.com/krikitue/image/upload/v1603897289/cocoonfly/Sky-is-the-limit_kmyack.jpg"
           fluid
-          style={{ height: 'auto', maxHeight: "100vh" }}
+          style={{ height: "auto", maxHeight: '100vh' }}
           alt="hero"
         />
       </Dimmer.Dimmable>
