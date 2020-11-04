@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes, {array} from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import { graphql } from 'gatsby';
-import {
- Container, Header, Segment, Card 
-} from 'semantic-ui-react';
+import { Container, Header, Segment, Card } from 'semantic-ui-react';
 import Seo from '../components/seo';
 import Layout from '../components/layout';
 import Carousel, {
@@ -56,26 +54,26 @@ function artistPage({ data }) {
       <Seo title="Single Artist" />
       <Container style={{ width: '100%' }}>
         <Segment style={{ width: '100%' }}>
-        <Header
-          as="h2"
-          id="gallery"
-          style={{
-            backgroundColor: 'teal',
-            color: '#ffffff',
-            padding: '5px 0',
-            textAlign: 'center',
-            borderRadius: '3px',
-          }}
-        >
-          Artist's Work
-        </Header>
+          <Header
+            as="h2"
+            id="gallery"
+            style={{
+              backgroundColor: 'teal',
+              color: '#ffffff',
+              padding: '5px 0',
+              textAlign: 'center',
+              borderRadius: '3px',
+            }}
+          >
+            Artist's Work
+          </Header>
           <Card style={{ width: '100%' }}>
             <Card.Content textAlign="center">
               <Card.Header textAlign="center">
                 <Header>{name}</Header>
               </Card.Header>
-              </Card.Content>
-              <Card.Content textAlign="center">
+            </Card.Content>
+            <Card.Content textAlign="center">
               <p>{bio}</p>
             </Card.Content>
           </Card>
@@ -87,7 +85,7 @@ function artistPage({ data }) {
 }
 
 artistPage.propTypes = {
-  data: PropTypes.array.isRequired,
-}
+  data: PropTypes.object.isRequired,
+};
 
 export default artistPage;

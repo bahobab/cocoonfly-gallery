@@ -1,11 +1,15 @@
 import React from 'react';
-import PropTypes, {array} from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import { graphql } from 'gatsby';
-import { Container, Header, Segment, Card } from "semantic-ui-react";
+import {
+ Container, Header, Segment, Card 
+} from 'semantic-ui-react';
 
-import Layout from "../components/layout";
+import Layout from '../components/layout';
 import Seo from '../components/seo';
-import Carousel, { photoMapper } from '../components/carousel/carousel.js';
+import Carousel, {
+  photoMapper,
+} from '../components/carousel/carousel.js';
 
 export const query = graphql`
   query GetSingleEvent($slug: String) {
@@ -28,38 +32,40 @@ export const query = graphql`
 `;
 
 function eventTemplate({ data }) {
-  const {
- date, description, location, media, title, } = data.event;
+  const { date, description, location, media, title 
+} = data.event;
   const photos = photoMapper(media);
   return (
     <Layout>
       <Seo title="Single Event" />
-      <Container style={{width: '100vw'}}>
+      <Container style={{ width: '100vw' }}>
         <Segment>
-        <Header
-        as="h1"
-        content="Cocoonfly Event"
-        style={{
-          textAlign: 'center',
-          color: '#fff',
-          backgroundColor: 'teal',
-          padding: '5px 0',
-          marginTop: '12px',
-          borderRadius: '3px',
-        }}
-      />
-        <Card style={{width: '100%'}}>
-          <Card.Content style={{ textAlign: "center" }}>
-            <Card.Header style={{ textAlign: "center" }}>{title}</Card.Header>
-            <p>{date}</p>
-            <p>{location}</p>
-            <p>{description}</p>
-          </Card.Content>
-          {/* <Card.Content> */}
-        </Card>
-        <Segment>
-          <Carousel photos={photos} />
-        </Segment>
+          <Header
+            as="h1"
+            content="Cocoonfly Event"
+            style={{
+              textAlign: 'center',
+              color: '#fff',
+              backgroundColor: 'teal',
+              padding: '5px 0',
+              marginTop: '12px',
+              borderRadius: '3px',
+            }}
+          />
+          <Card style={{ width: '100%' }}>
+            <Card.Content style={{ textAlign: 'center' }}>
+              <Card.Header style={{ textAlign: 'center' }}>
+                {title}
+              </Card.Header>
+              <p>{date}</p>
+              <p>{location}</p>
+              <p>{description}</p>
+            </Card.Content>
+            {/* <Card.Content> */}
+          </Card>
+          <Segment>
+            <Carousel photos={photos} />
+          </Segment>
         </Segment>
         {/* </Card.Content> */}
       </Container>
@@ -68,7 +74,7 @@ function eventTemplate({ data }) {
 }
 
 eventTemplate.propTypes = {
-  data: PropTypes.array.isRequired,
-}
+  data: PropTypes.object.isRequired,
+};
 
 export default eventTemplate;
