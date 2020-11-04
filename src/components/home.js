@@ -16,10 +16,18 @@ import Events from './events';
 import Artists from './artists';
 import Gallery from './gallery';
 
-import "./home.scss";
+import './home.scss';
 
 export const query = graphql`
   {
+    heroImage: file(relativePath: {eq: "Sky-is-the-limit.jpg"}) {
+      childImageSharp {
+        fluid (maxWidth: 400, maxHeight: 250) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
     events: allStrapiEvent(filter: { featured: { eq: true } }) {
       nodes {
         description
@@ -64,6 +72,7 @@ export const query = graphql`
       nodes {
         id
         name
+        slug
         artistImg {
           childImageSharp {
             fluid {
@@ -105,11 +114,9 @@ function Home() {
   const galleryArtists = data.galleryArtists.nodes;
   return (
     <Grid style={{ maxWidth: '100vw' }}>
-      <Hero />
+      <Hero heroImage={data.heroImage.childImageSharp.fluid} />
       <Segment className="homeSection">
-        <Message>
-          <MessageHeader>
-            <Header
+      <Header
               as="h2"
               id="info"
               style={{
@@ -122,22 +129,24 @@ function Home() {
             >
               Who we are
             </Header>
-          </MessageHeader>
-          <MessageContent style={{ marginTop: "10px" }}>
+        <Message>
+          <MessageContent style={{ marginTop: '10px' }}>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea
+              commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+              non proident, sunt in culpa qui officia deserunt mollit
+              anim id est laborum.
             </p>
           </MessageContent>
         </Message>
       </Segment>
 
-      <Segment className="homeSection">
+      <Segment style={{padding:'auto'}} className="homeSection">
         <Header
           as="h2"
           id="info"
@@ -152,7 +161,14 @@ function Home() {
           Cocoonfly Latest Events
         </Header>
         <Events events={data.events.nodes} />
-        <Button as={Link} to="/events" content="See All Events" primary />
+        <Button
+          as={Link}
+          to="/events"
+          primary
+          style={{ marginTop: '12px' }}
+        >
+        See All Events
+        </Button>
       </Segment>
 
       <Segment className="homeSection">
@@ -160,17 +176,24 @@ function Home() {
           as="h2"
           id="artists"
           style={{
-            backgroundColor: "teal",
-            color: "#ffffff",
-            padding: "5px 0",
-            textAlign: "center",
-            borderRadius: "3px",
+            backgroundColor: 'teal',
+            color: '#ffffff',
+            padding: '5px 0',
+            textAlign: 'center',
+            borderRadius: '3px',
           }}
         >
           Cocoonfly Featured Artists
         </Header>
         <Artists artists={galleryArtists} />
-        <Button as={Link} to="/artists" content="See All Artists" primary />
+        <Button
+          as={Link}
+          to="/artists"
+          primary
+          style={{ marginTop: '12px' }}
+        >
+          See All Artists
+        </Button>
       </Segment>
 
       <Segment className="homeSection">
@@ -178,17 +201,24 @@ function Home() {
           as="h2"
           id="gallery"
           style={{
-            backgroundColor: "teal",
-            color: "#ffffff",
-            padding: "5px 0",
-            textAlign: "center",
-            borderRadius: "3px",
+            backgroundColor: 'teal',
+            color: '#ffffff',
+            padding: '5px 0',
+            textAlign: 'center',
+            borderRadius: '3px',
           }}
         >
           Sample Gallery Work
         </Header>
         <Gallery artists={galleryArtists} />
-        <Button as={Link} to="/gallery" content="See Full Gallery" primary />
+        <Button
+          as={Link}
+          to="/gallery"
+          primary
+          style={{ marginTop: '12px' }}
+        >
+          See Full Gallery
+        </Button>
       </Segment>
     </Grid>
   );

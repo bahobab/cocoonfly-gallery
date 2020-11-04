@@ -1,9 +1,10 @@
 import React from 'react';
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from 'gatsby';
+import {Header, Segment} from 'semantic-ui-react';
 // import {Artists, Layout, Seo} from '../components';
 import Gallery from '../components/gallery';
 import Layout from '../components/layout';
-import Seo from '../components/seo';
+import SEO from '../components/seo';
 
 export const query = graphql`
   {
@@ -11,6 +12,7 @@ export const query = graphql`
       nodes {
         id
         name
+        slug
         artistImg {
           childImageSharp {
             fluid {
@@ -41,8 +43,24 @@ function GalleryPage() {
   const artists = data.artists.nodes;
   return (
     <Layout>
-      <Seo title="cocoonfly.com gallery" />
+      <SEO title="cocoonfly.com gallery" />
+      <Segment>
+      <Header
+          as="h1"
+          id="gallery"
+          style={{
+            backgroundColor: 'teal',
+            color: '#ffffff',
+            padding: '5px 0',
+            marginTop: '12px',
+            textAlign: 'center',
+            borderRadius: '3px',
+          }}
+        >
+          Full Cocoonfly Gallery
+        </Header>
       <Gallery artists={artists} />
+      </Segment>
     </Layout>
   );
 }

@@ -1,16 +1,22 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { Container, Segment, Card } from "semantic-ui-react";
-
+import React from 'react';
+import PropTypes, {array} from 'prop-types';
+import { graphql } from 'gatsby';
+import {
+ Container, Header, Segment, Card 
+} from 'semantic-ui-react';
 import Seo from '../components/seo';
 import Layout from '../components/layout';
-import Carousel, { photoMapper } from '../components/carousel/carousel.js';
+import Carousel, {
+  photoMapper,
+  // eslint-disable-next-line import/extensions
+} from '../components/carousel/carousel.js';
 
 export const query = graphql`
-  {
-    artist: strapiArtist {
+  query artistPage($slug: String) {
+    artist: strapiArtist(slug: { eq: $slug }) {
       bio
       name
+      slug
       artistImg {
         childImageSharp {
           fluid {
@@ -36,7 +42,7 @@ export const query = graphql`
 
 function artistPage({ data }) {
   const { name, bio, works } = data.artist;
-  const convertedWorks = works.map(work => {
+  const convertedWorks = works.map((work) => {
     // rename imgUrl to mediaUrl for photoMapper
     work = { ...work, mediaUrl: work.imgUrl };
     delete work.imgUrl;
@@ -48,19 +54,40 @@ function artistPage({ data }) {
   return (
     <Layout>
       <Seo title="Single Artist" />
-      <Container>
-        <Card>
-          <Card.Content textAlign="center">
-            <Card.Header textAlign="center">{name}</Card.Header>
-            <p>{bio}</p>
-          </Card.Content>
-        </Card>
-        <Segment>
+      <Container style={{ width: '100%' }}>
+        <Segment style={{ width: '100%' }}>
+        <Header
+          as="h2"
+          id="gallery"
+          style={{
+            backgroundColor: 'teal',
+            color: '#ffffff',
+            padding: '5px 0',
+            textAlign: 'center',
+            borderRadius: '3px',
+          }}
+        >
+          Artist's Work
+        </Header>
+          <Card style={{ width: '100%' }}>
+            <Card.Content textAlign="center">
+              <Card.Header textAlign="center">
+                <Header>{name}</Header>
+              </Card.Header>
+              </Card.Content>
+              <Card.Content textAlign="center">
+              <p>{bio}</p>
+            </Card.Content>
+          </Card>
           <Carousel photos={photos} />
         </Segment>
       </Container>
     </Layout>
   );
+}
+
+artistPage.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default artistPage;

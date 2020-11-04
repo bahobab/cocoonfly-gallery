@@ -23,10 +23,10 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  results.data.events.nodes.forEach(event => {
+  results.data.events.nodes.forEach((event) => {
     createPage({
       path: `/events/${event.slug}`,
-      component: path.resolve("src/templates/event-template.js"),
+      component: path.resolve('src/templates/event-template.js'),
       context: {
         slug: event.slug,
       },
@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  artistResults.data.artists.nodes.forEach(artist => {
+  artistResults.data.artists.nodes.forEach((artist) => {
     createPage({
       path: `/artists/${artist.slug}`,
       component: path.resolve('src/templates/artist-template.js'),

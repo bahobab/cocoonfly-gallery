@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import Gallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
+import './carousel.scss';
 
 function carousel({ photos }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
-  const opelLightBox = useCallback((event, { photo, index }) => {
+  const openLightBox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
     setViewerIsOpen(true);
   }, []);
@@ -16,11 +17,11 @@ function carousel({ photos }) {
   }
 
   return (
-    <div tyle={{ width: '100%' }}>
+    <div>
       <Gallery
+        style={{ maxWidth: '100%' }}
         photos={photos}
-        onClick={opelLightBox}
-        tyle={{ width: "100%" }}
+        onClick={openLightBox}
       />
       <ModalGateway>
         {viewerIsOpen ? (
@@ -30,7 +31,7 @@ function carousel({ photos }) {
               views={photos.map((photo) => ({
                 ...photo,
                 srcset: photo.srcset,
-                caption: photo.title || "caption",
+                caption: photo.title || 'caption',
               }))}
             />
           </Modal>
@@ -63,7 +64,7 @@ function ratio(node, index) {
   const x = node.mediaUrl.childImageSharp.fixed.width;
   const y = node.mediaUrl.childImageSharp.fixed.height;
   const c = gcd(x, y);
-  const aspect = '' + x / c + ':' + y / c;
+  const aspect = `${x / c}:${y / c}`;
   return aspect.split(':')[index];
 }
 // Photo data structure transformer
@@ -74,7 +75,7 @@ export function photoMapper(edges) {
     srcSet: image.mediaUrl.childImageSharp.fixed.srcSet,
     // srcSet: document.node.url.childImageSharp.fixed.srcSet,
     // title: image.node.title,
-    width: ratio(image, 0),
-    height: ratio(image, 1),
+    width: parseInt(ratio(image, 0), 32),
+    height: parseInt(ratio(image, 1), 32),
   }));
 }

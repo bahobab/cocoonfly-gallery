@@ -1,40 +1,41 @@
 import React from 'react';
+import propTypes, {object} from 'prop-types';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
-import {
-  Card,
-  Header,
-  Message,
-  MessageContent,
-  MessageHeader,
-} from 'semantic-ui-react';
+import { Card, Container, Header, Segment } from 'semantic-ui-react';
 
 function Artist({ artist }) {
-  const { name, bio, slug } = artist;
-  const artistLink = <Link to={`/artists/${slug}`}>See artist's work</Link>;
+  const { name, slug } = artist;
+  const artistLink = (
+    <Link to={`/artists/${slug}`}>
+      See {name}
+      &apos; work
+    </Link>
+  );
   return (
-    <Message style={{ width: "100%" }}>
-      <MessageHeader>
-        <Header as="h3">{name}</Header>
-      </MessageHeader>
-      <MessageContent>
-        <Card>
-          <Image fluid={artist.artistImg.childImageSharp.fluid} />
+    <Container textAlign="center" style={{ width: '100%', marginBottom: '20px' }}>
+      {/* <Segment style={{ width: '100%' }}> */}
+        <Card style={{ width: '100%' }}>
           <Card.Content>
-            <Card.Description>{artist.bio}</Card.Description>
+            <Card.Header>
+              <Header as="h3">{name}</Header>
+            </Card.Header>
           </Card.Content>
+          <Card.Content>
+            <figure>
+              <Image fluid={artist.artistImg.childImageSharp.fluid} />
+            </figure>
+          </Card.Content>
+          {artist.bio}
           <Card.Content>{artistLink}</Card.Content>
         </Card>
-        {/* {bio} */}
-        {/* <Card
-          image="https://res.cloudinary.com/krikitue/image/upload/v1604162578/user_vzmyfn.svg"
-          description={bio}
-          extra={artistLink}
-          style={{ width: "100%", textAlign: 'center' }}
-        /> */}
-      </MessageContent>
-    </Message>
+      {/* </Segment> */}
+    </Container>
   );
 }
+
+Artist.propTypes = {
+  artist: propTypes.object.isRequired,
+};
 
 export default Artist;

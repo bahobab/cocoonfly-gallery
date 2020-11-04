@@ -1,11 +1,16 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { Container, Header } from "semantic-ui-react";
+import React from 'react';
+import propTypes, {array} from 'prop-types';
 
-import Artist from "./artist";
+import Artist from './artist';
 
 function Artists({ artists }) {
-  return artists.map(artist => <Artist key={artist.slug} artist={artist} />);
+  return artists.map((artist) => (
+    <Artist key={artist.slug} artist={artist} />
+  ));
 }
+
+Artists.propTypes = {
+  artists: propTypes.array.isRequired,
+};
 
 export default Artists;

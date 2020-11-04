@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes, {array} from 'prop-types';
 import { graphql } from 'gatsby';
-import { Container, Segment, Card } from "semantic-ui-react";
+import { Container, Header, Segment, Card } from "semantic-ui-react";
 
 import Layout from "../components/layout";
 import Seo from '../components/seo';
@@ -33,8 +34,21 @@ function eventTemplate({ data }) {
   return (
     <Layout>
       <Seo title="Single Event" />
-      <Container>
-        <Card>
+      <Container style={{width: '100vw'}}>
+        <Segment>
+        <Header
+        as="h1"
+        content="Cocoonfly Event"
+        style={{
+          textAlign: 'center',
+          color: '#fff',
+          backgroundColor: 'teal',
+          padding: '5px 0',
+          marginTop: '12px',
+          borderRadius: '3px',
+        }}
+      />
+        <Card style={{width: '100%'}}>
           <Card.Content style={{ textAlign: "center" }}>
             <Card.Header style={{ textAlign: "center" }}>{title}</Card.Header>
             <p>{date}</p>
@@ -46,10 +60,15 @@ function eventTemplate({ data }) {
         <Segment>
           <Carousel photos={photos} />
         </Segment>
+        </Segment>
         {/* </Card.Content> */}
       </Container>
     </Layout>
   );
+}
+
+eventTemplate.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default eventTemplate;

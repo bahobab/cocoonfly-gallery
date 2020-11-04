@@ -1,6 +1,6 @@
 import React from 'react';
-import { graphql, useStaticQuery } from "gatsby";
-import { Header } from 'semantic-ui-react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Header, Segment } from 'semantic-ui-react';
 
 import Events from '../components/events';
 import Layout from '../components/layout';
@@ -15,6 +15,7 @@ export const query = graphql`
         description
         title
         location
+        slug
         media {
           mediaUrl {
             childImageSharp {
@@ -34,18 +35,21 @@ function EventsPage() {
   return (
     <Layout>
       <Seo title="cocoonfly.com artists" />
+      <Segment>
       <Header
         as="h1"
         content="All Cocoonfly Events"
         style={{
-          textAlign: "center",
+          textAlign: 'center',
           color: '#fff',
           backgroundColor: 'teal',
+          padding: '5px 0',
           marginTop: '12px',
           borderRadius: '3px',
         }}
       />
       <Events events={data.events.nodes} />
+      </Segment>
     </Layout>
   );
 }
