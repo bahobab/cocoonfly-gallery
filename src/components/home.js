@@ -20,9 +20,9 @@ import './home.scss';
 
 export const query = graphql`
   {
-    heroImage: file(relativePath: {eq: "Sky-is-the-limit.jpg"}) {
+    heroImage: file(relativePath: { eq: "Sky-is-the-limit.jpg" }) {
       childImageSharp {
-        fluid (maxWidth: 400, maxHeight: 250) {
+        fluid(maxWidth: 400, maxHeight: 250) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -116,19 +116,19 @@ function Home() {
     <Grid style={{ maxWidth: '100vw' }}>
       <Hero heroImage={data.heroImage.childImageSharp.fluid} />
       <Segment className="homeSection">
-      <Header
-              as="h2"
-              id="info"
-              style={{
-                backgroundColor: 'teal',
-                color: '#ffffff',
-                padding: '5px 0',
-                textAlign: 'center',
-                borderRadius: '3px',
-              }}
-            >
-              Who we are
-            </Header>
+        <Header
+          as="h2"
+          id="info"
+          style={{
+            backgroundColor: 'teal',
+            color: '#ffffff',
+            padding: '5px 0',
+            textAlign: 'center',
+            borderRadius: '3px',
+          }}
+        >
+          Who we are
+        </Header>
         <Message>
           <MessageContent style={{ marginTop: '10px' }}>
             <p>
@@ -146,7 +146,7 @@ function Home() {
         </Message>
       </Segment>
 
-      <Segment style={{padding:'auto'}} className="homeSection">
+      <Segment style={{ padding: 'auto' }} className="homeSection">
         <Header
           as="h2"
           id="info"
@@ -167,7 +167,7 @@ function Home() {
           primary
           style={{ marginTop: '12px' }}
         >
-        See All Events
+          See All Events
         </Button>
       </Segment>
 
