@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes, {object} from 'prop-types';
+import propTypes, { object } from 'prop-types';
 import { Link } from 'gatsby';
 // import Image from 'gatsby-image';
 import {
@@ -14,27 +14,27 @@ function Event({ event }) {
   const images = photoMapper(media);
 
   return (
-    <Container style={{ width: '100vw'}}>
+    <Container style={{ width: '100vw' }}>
       {/* <Segment textAlign='center' style={{ width: '100%', textAlign: 'center' }}> */}
-        <Card style={{ width: '100%' }}>
-          <Card.Content style={{ maxWidth: '100%' }}>
-            <Card.Header>
-              <Header as="h3" textAlign='center'>
-                <Link to={`/events/${slug}`}>
-                  {title} -{date}
-                </Link>
-              </Header>
-            </Card.Header>
-            <Card.Content textAlign='center'>
+      <Card style={{ width: '100%', marginTop: '12px' }}>
+        <Card.Content style={{ maxWidth: '100%' }}>
+          <Card.Header>
+            <Header as="h3" textAlign="center">
+              <Link to={`/events/${slug}`}>
+                {title} -{date}
+              </Link>
+            </Header>
+          </Card.Header>
+          <Card.Content textAlign="center">
 @
 {location}
-            </Card.Content>
           </Card.Content>
-          <Card.Content textAlign='center'>{description}</Card.Content>
-        </Card>
-        <Segment>
+        </Card.Content>
+        <Card.Content textAlign="center">{description}</Card.Content>
+        <Card.Content>
           <Carousel photos={images} style={{ width: '100%' }} />
-        </Segment>
+        </Card.Content>
+      </Card>
       {/* </Segment> */}
     </Container>
   );
