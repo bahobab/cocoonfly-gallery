@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Icon, Segment, Message } from 'semantic-ui-react';
+import {
+ Container, Icon, Segment, Message 
+} from 'semantic-ui-react';
 
 function Footer() {
   return (
@@ -13,9 +15,11 @@ function Footer() {
             backgroundColor: 'teal',
             width: '100%',
             display: 'flex',
-            flexWrap: 'wrap',
+            // flexWrap: 'wrap',
             justifyContent: 'space-around',
-            alignItems: 'flex-start',
+            // alignItems: 'flex-start',
+            flexDirection: 'column',
+            /* flex-wrap: wrap; */
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -65,9 +69,9 @@ function Footer() {
             }}
           >
             <Message.Header>
-              Our Locations
-              {' '}
-              <Icon name="map marker alternate" />
+              Our Locations 
+{' '}
+<Icon name="map marker alternate" />
             </Message.Header>
             <Message.Content>
               Chicago, USA - Accra, Ghana
