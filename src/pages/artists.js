@@ -31,20 +31,20 @@ function ArtistsPage() {
   return (
     <Layout>
       <Seo title="cocoonfly.com artists" />
-      <Segment>
-      <Header
-        as="h1"
-        content="All Cocoonfly Artists"
-        style={{
-          textAlign: 'center',
-          color: '#fff',
-          backgroundColor: 'teal',
-          padding: '5px 0',
-          marginTop: '12px',
-          borderRadius: '3px',
-        }}
-      />
-      <Artists artists={data.artists.nodes} />
+      <Segment style={{ marginTop: '45px' }}>
+        <Header
+          as="h1"
+          content="All Cocoonfly Artists"
+          style={{
+            textAlign: 'center',
+            color: '#fff',
+            backgroundColor: 'teal',
+            padding: '5px 0',
+            marginTop: '12px',
+            borderRadius: '3px',
+          }}
+        />
+        <Artists artists={data.artists.nodes} />
       </Segment>
     </Layout>
   );

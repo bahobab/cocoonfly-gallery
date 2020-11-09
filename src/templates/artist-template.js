@@ -53,7 +53,7 @@ function artistPage({ data }) {
     <Layout>
       <Seo title="Single Artist" />
       <Container style={{ width: '100%' }}>
-        <Segment style={{ width: '100%' }}>
+        <Segment style={{ width: '100%', marginTop: '45px' }}>
           <Header
             as="h2"
             id="gallery"

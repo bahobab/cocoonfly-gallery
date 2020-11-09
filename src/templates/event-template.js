@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes, { object } from 'prop-types';
 import { graphql } from 'gatsby';
-import {
- Container, Header, Segment, Card 
-} from 'semantic-ui-react';
+import { Container, Header, Segment, Card } from 'semantic-ui-react';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
@@ -32,14 +30,13 @@ export const query = graphql`
 `;
 
 function eventTemplate({ data }) {
-  const { date, description, location, media, title 
-} = data.event;
+  const { date, description, location, media, title } = data.event;
   const photos = photoMapper(media);
   return (
     <Layout>
       <Seo title="Single Event" />
       <Container style={{ width: '100vw' }}>
-        <Segment>
+        <Segment style={{ width: '100%', marginTop: '45px' }}>
           <Header
             as="h1"
             content="Cocoonfly Event"

@@ -1,0 +1,14 @@
+.ui.message {
+  color: white;
+  background-color: teal !important;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 641px) {
+  .ui.message {
+    flex-direction: row;
+  }
+}

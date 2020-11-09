@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import {Header, Segment} from 'semantic-ui-react';
+import { Header, Segment } from 'semantic-ui-react';
 // import {Artists, Layout, Seo} from '../components';
 import Gallery from '../components/gallery';
 import Layout from '../components/layout';
@@ -44,8 +44,8 @@ function GalleryPage() {
   return (
     <Layout>
       <SEO title="cocoonfly.com gallery" />
-      <Segment>
-      <Header
+      <Segment style={{ marginTop: '45px' }}>
+        <Header
           as="h1"
           id="gallery"
           style={{
@@ -59,7 +59,7 @@ function GalleryPage() {
         >
           Full Cocoonfly Gallery
         </Header>
-      <Gallery artists={artists} />
+        <Gallery artists={artists} />
       </Segment>
     </Layout>
   );

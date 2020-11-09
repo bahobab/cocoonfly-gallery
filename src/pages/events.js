@@ -35,20 +35,20 @@ function EventsPage() {
   return (
     <Layout>
       <Seo title="cocoonfly.com artists" />
-      <Segment>
-      <Header
-        as="h1"
-        content="All Cocoonfly Events"
-        style={{
-          textAlign: 'center',
-          color: '#fff',
-          backgroundColor: 'teal',
-          padding: '5px 0',
-          marginTop: '12px',
-          borderRadius: '3px',
-        }}
-      />
-      <Events events={data.events.nodes} />
+      <Segment style={{ marginTop: '45px' }}>
+        <Header
+          as="h1"
+          content="All Cocoonfly Events"
+          style={{
+            textAlign: 'center',
+            color: '#fff',
+            backgroundColor: 'teal',
+            padding: '5px 0',
+            marginTop: '12px',
+            borderRadius: '3px',
+          }}
+        />
+        <Events events={data.events.nodes} />
       </Segment>
     </Layout>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
-import {
- Container, Icon, Segment, Message 
-} from 'semantic-ui-react';
+import { Icon, Segment, Message } from 'semantic-ui-react';
+
+import './footer.scss';
 
 function Footer() {
   return (
@@ -10,17 +10,14 @@ function Footer() {
       <Segment>
         <Message
           icon
-          style={{
-            color: 'white',
-            backgroundColor: 'teal',
-            width: '100%',
-            display: 'flex',
-            // flexWrap: 'wrap',
-            justifyContent: 'space-around',
-            // alignItems: 'flex-start',
-            flexDirection: 'column',
-            /* flex-wrap: wrap; */
-          }}
+          // style={{
+          //   color: 'white',
+          //   backgroundColor: 'teal',
+          //   width: '100%',
+          //   display: 'flex',
+          //   justifyContent: 'space-around',
+          //   flexDirection: 'column',
+          // }}
         >
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div
@@ -52,9 +49,7 @@ function Footer() {
             }}
           >
             <Message.Header>
-              On the web 
-{' '}
-<Icon name="world" />
+              On the web <Icon name="world" />
             </Message.Header>
             <Message.Content>www.cocoonfly.com</Message.Content>
           </div>
@@ -69,9 +64,7 @@ function Footer() {
             }}
           >
             <Message.Header>
-              Our Locations 
-{' '}
-<Icon name="map marker alternate" />
+              Our Locations <Icon name="map marker alternate" />
             </Message.Header>
             <Message.Content>
               Chicago, USA - Accra, Ghana
