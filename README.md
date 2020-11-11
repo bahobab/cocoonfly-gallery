@@ -5,7 +5,7 @@
   </a>
 </p>
 
-## cocoonfly.com
+# cocoonfly.com
 
 Cocoonfly.com is a website to showcase art work from selected Nigerian artists.
 You will see:
@@ -42,7 +42,7 @@ clone repo then run:
     gatsby develop
     ```
     
-For the Strapi backend refer to ![cocoonfly-api](https://github.com/bahobab/cocoonfly-api)
+For the Strapi backend refer to [![cocoonfly-api]](https://github.com/bahobab/cocoonfly-api)
 
 
 
