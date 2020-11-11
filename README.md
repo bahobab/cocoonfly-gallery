@@ -5,7 +5,7 @@
   </a>
 </p>
 
-##cocoonfly.com
+## cocoonfly.com
 
     Cocoonfly.com is a website to showcase art work from selected Nigerian artists.
     You will see:
@@ -13,11 +13,11 @@
     - Artists' bio
     - Gallery of artists work
     
-##The cocoonfly.com Website
+## The cocoonfly.com Website
 
 This is a Jamstack website built with Gatsby for the front end static site generator, Strapi for the backend logic, and Cloudinary for cloud-based image management and repository.
 
-##Site Performance
+## Site Performance
 
 The website passes the Google mobile test as well as Lighthouse audits.
 Code split using React.lazy() to lazy-load components (https://reactjs.org/docs/code-splitting.html)
@@ -32,7 +32,7 @@ Below are the screenshots for the different tests and audits
 **2. Lighthouse audits:**
 
 
-##Installation:
+## Installation:
 
 clone repo then run:
 
@@ -50,6 +50,6 @@ For the Strapi backend refer to ![cocoonfly-api](https://github.com/bahobab/coco
 
 [![Deployed to Netlify](https://cocoonfly.netlify.app)
 
-<!--[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default) -->
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
