@@ -7,11 +7,11 @@
 
 ## cocoonfly.com
 
-    Cocoonfly.com is a website to showcase art work from selected Nigerian artists.
-    You will see:
-    - Events produced by Cocoonfly Gallery
-    - Artists' bio
-    - Gallery of artists work
+Cocoonfly.com is a website to showcase art work from selected Nigerian artists.
+You will see:
+- Events produced by Cocoonfly Gallery
+- Artists' bio
+- Gallery of artists work
     
 ## The cocoonfly.com Website
 
@@ -48,7 +48,7 @@ For the Strapi backend refer to [![cocoonfly-api](https://github.com/bahobab/coc
 
 ## 💫 Deployment
 
-[![Deployed to Netlify](https://cocoonfly.netlify.app)](cocoonfly.com)
+[![Deployed to Netlify](https://cocoonfly.netlify.app)]
 
 <!-- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default) -->
 
