@@ -42,14 +42,14 @@ clone repo then run:
     gatsby develop
     ```
     
-For the Strapi backend refer to ![cocoonfly-api](https://github.com/bahobab/cocoonfly-api)
+For the Strapi backend refer to [![cocoonfly-api](https://github.com/bahobab/cocoonfly-api)](cocoonfly-api)
 
 
 
-## 💫 Deploy
+## 💫 Deployment
 
-[![Deployed to Netlify](https://cocoonfly.netlify.app)
+[![Deployed to Netlify](https://cocoonfly.netlify.app)](cocoonfly.com)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
+<!-- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default) -->
 
 <!-- AUTO-GENERATED-CONTENT:END -->
