@@ -48,7 +48,7 @@ For the Strapi backend refer to [cocoonfly-api](https://github.com/bahobab/cocoo
 
 ## 💫 Deployment
 
-[Deployed to Netlify](https://cocoonfly.netlify.app)
+[![Deployed to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://cocoonfly.netlify.app)
 
 <!-- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default) -->
 
