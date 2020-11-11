@@ -2,3 +2,14 @@
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+
+@media screen and (min-width: 993px) {
+  .ui.grid {
+    max-width: 90vw !important;
+    width: 100% !important;
+    align-items: center;
+    justify-content: center;
+    margin: auto !important;
+    /*margin-top: 3rem !; */
+  }
+}

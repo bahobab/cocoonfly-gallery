@@ -5,14 +5,14 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Grid, Container } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
-import Header from './header';
-import Footer from "./footer";
-// import "./layout.css"
+import Footer from './footer';
+
+const Header = React.lazy(() => import('./header'));
 import './layout.scss';
 
 const Layout = ({ children }) => {
@@ -29,7 +29,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="app" style={{ maxWidth: '100vw' }}>
-        <Header />
+        <Suspense fallback={<div>...Loading</div>}>
+          <Header />
+        </Suspense>
         <Grid>
           <main style={{ maxWidth: '100%' }}>{children}</main>
         </Grid>

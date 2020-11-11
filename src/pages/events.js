@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Header, Segment } from 'semantic-ui-react';
 
-import Events from '../components/events';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
+
+const Events = React.lazy(() => import('../components/events'));
 
 export const query = graphql`
   {
@@ -48,7 +49,9 @@ function EventsPage() {
             borderRadius: '3px',
           }}
         />
-        <Events events={data.events.nodes} />
+        <Suspense fallback={<div>...loading</div>}>
+          <Events events={data.events.nodes} />
+        </Suspense>
       </Segment>
     </Layout>
   );

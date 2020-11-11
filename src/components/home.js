@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
-
 import {
   Button,
   Grid,
   Header,
   Message,
-  MessageHeader,
   MessageContent,
   Segment,
 } from 'semantic-ui-react';
 
-import Hero from './hero';
-import Events from './events';
-import Artists from './artists';
-import Gallery from './gallery';
+// import Hero from './hero';
+// import Events from './events';
+// import Artists from './artists';
+// import Gallery from './gallery';
 
 import './home.scss';
+
+const Hero = React.lazy(() => import('./hero'));
+const Events = React.lazy(() => import('./events'));
+const Artists = React.lazy(() => import('./artists'));
+const Gallery = React.lazy(() => import('./gallery'));
 
 export const query = graphql`
   {
@@ -114,7 +117,9 @@ function Home() {
   const galleryArtists = data.galleryArtists.nodes;
   return (
     <Grid style={{ maxWidth: '100vw' }}>
-      <Hero heroImage={data.heroImage.childImageSharp.fluid} />
+      <Suspense fallback={<div>... Loading</div>}>
+        <Hero heroImage={data.heroImage.childImageSharp.fluid} />
+      </Suspense>
       <Segment className="homeSection">
         <Header
           as="h2"
@@ -160,7 +165,9 @@ function Home() {
         >
           Cocoonfly Latest Events
         </Header>
-        <Events events={data.events.nodes} />
+        <Suspense fallback={<div>... Loading</div>}>
+          <Events events={data.events.nodes} />
+        </Suspense>
         <Button
           as={Link}
           to="/events"
@@ -185,7 +192,9 @@ function Home() {
         >
           Cocoonfly Featured Artists
         </Header>
-        <Artists artists={galleryArtists} />
+        <Suspense fallback={<div>... Loading</div>}>
+          <Artists artists={galleryArtists} />
+        </Suspense>
         <Button
           as={Link}
           to="/artists"
@@ -210,7 +219,9 @@ function Home() {
         >
           Sample Gallery Work
         </Header>
-        <Gallery artists={galleryArtists} />
+        <Suspense fallback={<div>... Loading</div>}>
+          <Gallery artists={galleryArtists} />
+        </Suspense>
         <Button
           as={Link}
           to="/gallery"
