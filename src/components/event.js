@@ -2,14 +2,11 @@ import React from 'react';
 import propTypes, { object } from 'prop-types';
 import { Link } from 'gatsby';
 // import Image from 'gatsby-image';
-import {
- Header, Container, Segment, Card 
-} from 'semantic-ui-react';
+import { Header, Container, Segment, Card } from 'semantic-ui-react';
 import Carousel, { photoMapper } from './carousel/carousel';
 
 function Event({ event }) {
-  const {
- title, date, location, slug, description, media, } = event;
+  const { title, date, location, slug, description, media } = event;
 
   const images = photoMapper(media);
 
@@ -25,10 +22,7 @@ function Event({ event }) {
               </Link>
             </Header>
           </Card.Header>
-          <Card.Content textAlign="center">
-@
-{location}
-          </Card.Content>
+          <Card.Content textAlign="center">@{location}</Card.Content>
         </Card.Content>
         <Card.Content textAlign="center">{description}</Card.Content>
         <Card.Content>
