@@ -10,14 +10,14 @@ import {
 } from 'semantic-ui-react';
 
 // import Hero from './hero';
-// import Events from './events';
+import Events from './events';
 // import Artists from './artists';
 // import Gallery from './gallery';
 
 import './home.scss';
 
 const Hero = React.lazy(() => import('./hero'));
-const Events = React.lazy(() => import('./events'));
+// const Events = React.lazy(() => import('./events'));
 const Artists = React.lazy(() => import('./artists'));
 const Gallery = React.lazy(() => import('./gallery'));
 
@@ -165,9 +165,9 @@ function Home() {
         >
           Cocoonfly Latest Events
         </Header>
-        <Suspense fallback={<div>... Loading</div>}>
-          <Events events={data.events.nodes} />
-        </Suspense>
+        {/* <Suspense fallback={<div>... Loading</div>}> */}
+        <Events events={data.events.nodes} />
+        {/* </Suspense> */}
         <Button
           as={Link}
           to="/events"
