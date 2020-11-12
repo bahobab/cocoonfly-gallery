@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Header, Segment } from 'semantic-ui-react';
 
-import Events from '../events';
+import Events from '../components/events';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 
