@@ -1,11 +1,11 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Header, Segment } from 'semantic-ui-react';
 
 import Layout from '../components/layout';
+// eslint-disable-next-line import/no-named-as-default-member
 import Seo from '../components/seo';
-
-const Artists = React.lazy(() => import('../components/artists'));
+import Artists from '../components/artists';
 
 export const query = graphql`
   {
@@ -45,9 +45,7 @@ function ArtistsPage() {
             borderRadius: '3px',
           }}
         />
-        <Suspense fallback={<div>...loading</div>}>
-          <Artists artists={data.artists.nodes} />
-        </Suspense>
+        <Artists artists={data.artists.nodes} />
       </Segment>
     </Layout>
   );

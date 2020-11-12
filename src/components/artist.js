@@ -1,17 +1,14 @@
 import React from 'react';
-import propTypes, { object } from 'prop-types';
+import propTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
-import {
- Card, Container, Header, Segment 
-} from 'semantic-ui-react';
+import { Card, Container, Header, Segment } from 'semantic-ui-react';
 
 function Artist({ artist }) {
   const { name, slug } = artist;
   const artistLink = (
     <Link to={`/artists/${slug}`}>
-      See
-      {' '}
+      See&nbsp;
       {name}
       &apos; work
     </Link>
@@ -42,7 +39,7 @@ function Artist({ artist }) {
 }
 
 Artist.propTypes = {
-  artist: propTypes.object.isRequired,
+  artist: propTypes.objectOf(propTypes.string).isRequired,
 };
 
 export default Artist;

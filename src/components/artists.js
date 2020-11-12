@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes, {array} from 'prop-types';
+import propTypes from 'prop-types';
 
 import Artist from './artist';
 
@@ -10,7 +10,7 @@ function Artists({ artists }) {
 }
 
 Artists.propTypes = {
-  artists: propTypes.array.isRequired,
+  artists: propTypes.arrayOf(propTypes.object).isRequired,
 };
 
 export default Artists;

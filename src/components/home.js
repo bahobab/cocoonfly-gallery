@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import {
   Button,
@@ -9,17 +9,12 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
-// import Hero from './hero';
+import Hero from './hero';
 import Events from './events';
-// import Artists from './artists';
-// import Gallery from './gallery';
+import Artists from './artists';
+import Gallery from './gallery';
 
 import './home.scss';
-
-const Hero = React.lazy(() => import('./hero'));
-// const Events = React.lazy(() => import('./events'));
-const Artists = React.lazy(() => import('./artists'));
-const Gallery = React.lazy(() => import('./gallery'));
 
 export const query = graphql`
   {
@@ -102,24 +97,12 @@ export const query = graphql`
   }
 `;
 
-// gallery: allCloudinaryMedia {
-//   edges {
-//     node {
-//       id
-//       secure_url
-//       resource_type
-//     }
-//   }
-// }
-
 function Home() {
   const data = useStaticQuery(query);
   const galleryArtists = data.galleryArtists.nodes;
   return (
     <Grid style={{ maxWidth: '100vw' }}>
-      <Suspense fallback={<div>... Loading</div>}>
-        <Hero heroImage={data.heroImage.childImageSharp.fluid} />
-      </Suspense>
+      <Hero heroImage={data.heroImage.childImageSharp.fluid} />
       <Segment className="homeSection">
         <Header
           as="h2"
@@ -165,9 +148,7 @@ function Home() {
         >
           Cocoonfly Latest Events
         </Header>
-        {/* <Suspense fallback={<div>... Loading</div>}> */}
         <Events events={data.events.nodes} />
-        {/* </Suspense> */}
         <Button
           as={Link}
           to="/events"
@@ -192,9 +173,7 @@ function Home() {
         >
           Cocoonfly Featured Artists
         </Header>
-        <Suspense fallback={<div>... Loading</div>}>
-          <Artists artists={galleryArtists} />
-        </Suspense>
+        <Artists artists={galleryArtists} />
         <Button
           as={Link}
           to="/artists"
@@ -219,9 +198,7 @@ function Home() {
         >
           Sample Gallery Work
         </Header>
-        <Suspense fallback={<div>... Loading</div>}>
-          <Gallery artists={galleryArtists} />
-        </Suspense>
+        <Gallery artists={galleryArtists} />
         <Button
           as={Link}
           to="/gallery"

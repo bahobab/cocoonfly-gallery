@@ -4,10 +4,11 @@ import { graphql } from 'gatsby';
 import { Container, Header, Segment, Card } from 'semantic-ui-react';
 
 import Layout from '../components/layout';
+// eslint-disable-next-line import/no-named-as-default-member
 import Seo from '../components/seo';
 import Carousel, {
   photoMapper,
-} from '../components/carousel/carousel.js';
+} from '../components/carousel/carousel';
 
 export const query = graphql`
   query GetSingleEvent($slug: String) {

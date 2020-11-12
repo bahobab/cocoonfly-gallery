@@ -1,11 +1,8 @@
 import React from 'react';
-import propTypes, {array} from 'prop-types';
+import propTypes from 'prop-types';
 import { Link } from 'gatsby';
-// import Image from 'gatsby-image';
 // eslint-disable-next-line prettier/prettier
-import {
-  Container, Header, Card,
-} from 'semantic-ui-react';
+import { Container, Header, Card } from 'semantic-ui-react';
 
 import Carousel, { photoMapper } from './carousel/carousel';
 
@@ -20,7 +17,10 @@ function Gallery({ artists }) {
     const photos = photoMapper(works);
 
     return (
-      <Card key={artist.slug} style={{ width: '100%', marginTop: '20px' }}>
+      <Card
+        key={artist.slug}
+        style={{ width: '100%', marginTop: '20px' }}
+      >
         <Card.Content style={{ width: '100%' }}>
           <Card.Header>
             <Header textAlign="center">
@@ -58,7 +58,7 @@ function Gallery({ artists }) {
 }
 
 Gallery.propTypes = {
-  artists: propTypes.array.isRequired,
+  artists: propTypes.arrayOf(propTypes.shape).isRequired,
 };
 
 export default Gallery;

@@ -1,11 +1,11 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Header, Segment } from 'semantic-ui-react';
 // import {Artists, Layout, Seo} from '../components';
 import Layout from '../components/layout';
+import Gallery from '../components/gallery';
+// eslint-disable-next-line import/no-named-as-default-member
 import SEO from '../components/seo';
-
-const Gallery = React.lazy(() => import('../components/gallery'));
 
 export const query = graphql`
   {
@@ -60,9 +60,7 @@ function GalleryPage() {
         >
           Full Cocoonfly Gallery
         </Header>
-        <Suspense fallback={<div>...loading</div>}>
-          <Gallery artists={artists} />
-        </Suspense>
+        <Gallery artists={artists} />
       </Segment>
     </Layout>
   );

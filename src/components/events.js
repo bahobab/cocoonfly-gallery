@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes, {array} from 'prop-types';
+import propTypes from 'prop-types';
 
 import Event from './event';
 import './event.scss';
@@ -11,7 +11,8 @@ function Events({ events }) {
 }
 
 Events.propTypes = {
-  events: propTypes.array.isRequired,
+  events: propTypes.arrayOf(propTypes.array).isRequired,
+  // events: propTypes.array.isRequired,
 };
 
 export default Events;

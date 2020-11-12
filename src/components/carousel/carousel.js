@@ -65,8 +65,6 @@ function ratio(node, index) {
   const y = node.mediaUrl.childImageSharp.fixed.height;
   const c = gcd(x, y);
   const aspect = `${x / c}:${y / c}`;
-  // console.log('>>x, y, c', x, y, c);
-  // console.log('>>aspect', aspect);
   return aspect.split(':')[index];
 }
 // Photo data structure transformer

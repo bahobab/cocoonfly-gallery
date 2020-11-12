@@ -1,17 +1,11 @@
 import React from 'react';
-import PropTypes, {object} from 'prop-types';
+import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
-// import { Link } from 'gatsby';
-import {
-  Container,
-  Dimmer,
-  Button,
-  Message,
-} from 'semantic-ui-react';
+import { Container, Button, Message } from 'semantic-ui-react';
 
 import './hero.scss';
 
-function Hero({heroImage}) {
+function Hero({ heroImage }) {
   return (
     <Container className="heroSection" as="section">
       <div className="ccfMessage">
@@ -28,21 +22,13 @@ function Hero({heroImage}) {
       >
         Click Here
       </Button>
-      {/* <Dimmer.Dimmable dimmed style={{ height: 'auto', maxHeight: '100vh', marginTop: '1px' }}> */}
-        {/* <Dimmer simple style={{ opacity: '0.5' }} /> */}
-        <Image
-          // src="https://res.cloudinary.com/krikitue/image/upload/v1603897289/cocoonfly/Sky-is-the-limit_kmyack.jpg"
-          // src={heroImage}
-          fluid={heroImage}
-          alt="hero"
-        />
-      {/* </Dimmer.Dimmable> */}
+      <Image fluid={heroImage} alt="hero" />
     </Container>
   );
 }
 
 Hero.propTypes = {
-  heroImage: PropTypes.object.isRequired,
-}
+  heroImage: PropTypes.objectOf(PropTypes.string).isRequired,
+};
 
 export default Hero;

@@ -1,8 +1,7 @@
 import React from 'react';
-import propTypes, { object } from 'prop-types';
+import propTypes from 'prop-types';
 import { Link } from 'gatsby';
-// import Image from 'gatsby-image';
-import { Header, Container, Segment, Card } from 'semantic-ui-react';
+import { Header, Container, Card } from 'semantic-ui-react';
 import Carousel, { photoMapper } from './carousel/carousel';
 
 function Event({ event }) {
@@ -18,11 +17,16 @@ function Event({ event }) {
           <Card.Header>
             <Header as="h3" textAlign="center">
               <Link to={`/events/${slug}`}>
-                {title} -{date}
+                {title}
+                &nbsp;-&nbsp;
+                {date}
               </Link>
             </Header>
           </Card.Header>
-          <Card.Content textAlign="center">@{location}</Card.Content>
+          <Card.Content textAlign="center">
+            @&nbsp;
+            {location}
+          </Card.Content>
         </Card.Content>
         <Card.Content textAlign="center">{description}</Card.Content>
         <Card.Content>
@@ -35,6 +39,6 @@ function Event({ event }) {
 }
 
 Event.propTypes = {
-  event: propTypes.object.isRequired,
+  event: propTypes.objectOf(propTypes.string).isRequired,
 };
 export default Event;
