@@ -39,7 +39,7 @@ function Artist({ artist }) {
 }
 
 Artist.propTypes = {
-  artist: propTypes.objectOf(propTypes.string).isRequired,
+  artist: propTypes.object.isRequired,
 };
 
 export default Artist;

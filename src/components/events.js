@@ -11,7 +11,7 @@ function Events({ events }) {
 }
 
 Events.propTypes = {
-  events: propTypes.arrayOf(propTypes.array).isRequired,
+  events: propTypes.array.isRequired,
   // events: propTypes.array.isRequired,
 };
 

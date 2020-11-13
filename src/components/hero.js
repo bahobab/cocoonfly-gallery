@@ -28,7 +28,7 @@ function Hero({ heroImage }) {
 }
 
 Hero.propTypes = {
-  heroImage: PropTypes.objectOf(PropTypes.string).isRequired,
+  heroImage: PropTypes.object.isRequired,
 };
 
 export default Hero;

@@ -21,8 +21,8 @@ export const query = graphql`
         media {
           mediaUrl {
             childImageSharp {
-              fixed(width: 960) {
-                ...GatsbyImageSharpFixed
+              fixed {
+                ...GatsbyImageSharpFixed_withWebp
               }
             }
           }

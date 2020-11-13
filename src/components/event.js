@@ -39,6 +39,6 @@ function Event({ event }) {
 }
 
 Event.propTypes = {
-  event: propTypes.objectOf(propTypes.string).isRequired,
+  event: propTypes.object.isRequired,
 };
 export default Event;

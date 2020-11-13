@@ -16,6 +16,17 @@ import Gallery from './gallery';
 
 import './home.scss';
 
+// hero ...GatsbyImageSharpFluid
+// event fixed(width: 960) {
+// ...GatsbyImageSharpFixed
+// }
+
+// artist childImageSharp {
+// fluid {
+// ...GatsbyImageSharpFluid
+// }
+// }
+
 export const query = graphql`
   {
     heroImage: file(relativePath: { eq: "Sky-is-the-limit.jpg" }) {
@@ -39,8 +50,8 @@ export const query = graphql`
           featured
           mediaUrl {
             childImageSharp {
-              fixed(width: 960) {
-                ...GatsbyImageSharpFixed
+              fixed(height: 480) {
+                ...GatsbyImageSharpFixed_withWebp
               }
             }
           }
@@ -83,8 +94,8 @@ export const query = graphql`
           description
           imgUrl {
             childImageSharp {
-              fixed(width: 960) {
-                ...GatsbyImageSharpFixed
+              fixed {
+                ...GatsbyImageSharpFixed_withWebp
               }
             }
           }

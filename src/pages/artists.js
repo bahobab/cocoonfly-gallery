@@ -18,7 +18,7 @@ export const query = graphql`
         artistImg {
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

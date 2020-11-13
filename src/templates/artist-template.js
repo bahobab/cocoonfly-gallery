@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Container, Header, Segment, Card } from 'semantic-ui-react';
 import Seo from '../components/seo';
@@ -18,7 +18,7 @@ export const query = graphql`
       artistImg {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -28,8 +28,8 @@ export const query = graphql`
         title
         imgUrl {
           childImageSharp {
-            fixed(width: 960) {
-              ...GatsbyImageSharpFixed
+            fixed {
+              ...GatsbyImageSharpFixed_withWebp
             }
           }
         }
