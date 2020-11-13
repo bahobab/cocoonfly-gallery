@@ -32,7 +32,7 @@ export const query = graphql`
     heroImage: file(relativePath: { eq: "Sky-is-the-limit.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 400, maxHeight: 250) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
@@ -68,7 +68,7 @@ export const query = graphql`
         artistImg {
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -85,7 +85,7 @@ export const query = graphql`
         artistImg {
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -94,7 +94,7 @@ export const query = graphql`
           description
           imgUrl {
             childImageSharp {
-              fixed {
+              fixed(height: 480) {
                 ...GatsbyImageSharpFixed_withWebp
               }
             }

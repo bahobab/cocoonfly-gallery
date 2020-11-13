@@ -26,7 +26,7 @@ export const query = graphql`
           description
           imgUrl {
             childImageSharp {
-              fixed {
+              fixed(height: 480) {
                 ...GatsbyImageSharpFixed_withWebp
               }
             }

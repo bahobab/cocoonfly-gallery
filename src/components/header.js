@@ -10,7 +10,7 @@ export const query = graphql`
     logoImage: file(relativePath: { eq: "cocoonfly-logo.png" }) {
       childImageSharp {
         fixed(width: 40, height: 40) {
-          ...GatsbyImageSharpFixed
+          ...GatsbyImageSharpFixed_withWebp
         }
       }
     }
