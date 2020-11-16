@@ -9,10 +9,11 @@
 
 Cocoonfly.com is a website to showcase art work from selected Nigerian artists.
 You will see:
+
 - Events produced by Cocoonfly Gallery
 - Artists' bio
 - Gallery of artists work
-    
+
 ## The cocoonfly.com Website
 
 This is a Jamstack website built with Gatsby for the front end static site generator, Strapi for the backend logic, and Cloudinary for cloud-based image management and repository.
@@ -24,13 +25,11 @@ Code split using React.lazy() to lazy-load components (https://reactjs.org/docs/
 Image optimization techniques to improve performace using resources listed here: https://web.dev/uses-responsive-images/?utm_source=lighthouse&utm_medium=devtools
 In addition I used this site to adjust/fix images aspect ratio: https://croppola.com/
 
-Below are the screenshots for the different tests and audits 
+Below are the screenshots for the different tests and audits
 
 **1. Google mobile app test:**
 
-
 **2. Lighthouse audits:**
-
 
 ## Installation:
 
@@ -41,14 +40,14 @@ clone repo then run:
     cd [project-directory]/
     gatsby develop
     ```
-    
+
 For the Strapi backend refer to [cocoonfly-api](https://github.com/bahobab/cocoonfly-api)
-
-
 
 ## 💫 Deployment
 
-[![Deployed to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://cocoonfly.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c00fd2b4-337b-4eb3-8f18-580ae54e6a2d/deploy-status)](https://app.netlify.com/sites/cocoonfly/deploys)
+
+<!-- [![Deployed to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://cocoonfly.netlify.app) -->
 
 <!-- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default) -->
 
