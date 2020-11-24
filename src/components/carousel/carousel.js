@@ -69,7 +69,7 @@ function ratio(node, index) {
 }
 // Photo data structure transformer
 export function photoMapper(edges) {
-  return edges.map((image) => ({
+  return (edges || []).map((image) => ({
     src: image.mediaUrl.childImageSharp.fixed.src,
     // src: document.node.url.childImageSharp.fixed.src,
     srcSet: image.mediaUrl.childImageSharp.fixed.srcSet,

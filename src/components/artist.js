@@ -26,8 +26,11 @@ function Artist({ artist }) {
           </Card.Header>
         </Card.Content>
         <Card.Content>
-          <figure>
-            <Image fluid={artist.artistImg.childImageSharp.fluid} />
+          <figure style={{ width: '75vw' }}>
+            <Image
+              fluid={artist.artistImg.childImageSharp.fluid}
+              style={{ height: 'auto', textAlign: 'center' }}
+            />
           </figure>
         </Card.Content>
         <Card.Content>{artist.bio}</Card.Content>

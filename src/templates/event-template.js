@@ -18,10 +18,13 @@ export const query = graphql`
       description
       location
       media {
-        mediaUrl {
-          childImageSharp {
-            fixed(height: 480) {
-              ...GatsbyImageSharpFixed_withWebp
+        mediaList {
+          featured
+          mediaUrl {
+            childImageSharp {
+              fixed(height: 480) {
+                ...GatsbyImageSharpFixed_withWebp
+              }
             }
           }
         }
@@ -32,7 +35,7 @@ export const query = graphql`
 
 function eventTemplate({ data }) {
   const { date, description, location, media, title } = data.event;
-  const photos = photoMapper(media);
+  const photos = photoMapper([...media.mediaList]);
   return (
     <Layout>
       <Seo title="Single Event" />

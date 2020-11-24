@@ -19,10 +19,13 @@ export const query = graphql`
         location
         slug
         media {
-          mediaUrl {
-            childImageSharp {
-              fixed(height: 480) {
-                ...GatsbyImageSharpFixed_withWebp
+          mediaList {
+            featured
+            mediaUrl {
+              childImageSharp {
+                fixed(height: 480) {
+                  ...GatsbyImageSharpFixed_withWebp
+                }
               }
             }
           }
@@ -34,6 +37,11 @@ export const query = graphql`
 
 function EventsPage() {
   const data = useStaticQuery(query);
+  const pageEvents = data.events.nodes.map((event) => ({
+    ...event,
+    media: [...event.media.mediaList],
+  }));
+
   return (
     <Layout>
       <Seo title="cocoonfly.com artists" />
@@ -50,7 +58,7 @@ function EventsPage() {
             borderRadius: '3px',
           }}
         />
-        <Events events={data.events.nodes} />
+        <Events events={pageEvents} />
       </Segment>
     </Layout>
   );

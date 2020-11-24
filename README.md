@@ -45,7 +45,7 @@ For the Strapi backend refer to [cocoonfly-api](https://github.com/bahobab/cocoo
 
 ## 💫 Deployment
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c00fd2b4-337b-4eb3-8f18-580ae54e6a2d/deploy-status)](https://app.netlify.com/sites/cocoonfly/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c00fd2b4-337b-4eb3-8f18-580ae54e6a2d/deploy-status)](https://cocoonfly.netlify.app)
 
 <!-- [![Deployed to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://cocoonfly.netlify.app) -->
 

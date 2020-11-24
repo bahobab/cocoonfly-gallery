@@ -37,7 +37,14 @@ export const query = graphql`
       }
     }
 
-    events: allStrapiEvent(filter: { featured: { eq: true } }) {
+    events: allStrapiEvent(
+      filter: {
+        featured: { eq: true }
+        media: {
+          mediaList: { elemMatch: { featured: { eq: true } } }
+        }
+      }
+    ) {
       nodes {
         description
         date
@@ -47,13 +54,16 @@ export const query = graphql`
         featured
         id
         media {
-          featured
-          mediaUrl {
-            childImageSharp {
-              fixed(height: 480) {
-                ...GatsbyImageSharpFixed_withWebp
+          mediaList {
+            featured
+            mediaUrl {
+              childImageSharp {
+                fixed(height: 480) {
+                  ...GatsbyImageSharpFixed_withWebp
+                }
               }
             }
+            id
           }
         }
       }
@@ -111,6 +121,19 @@ export const query = graphql`
 function Home() {
   const data = useStaticQuery(query);
   const galleryArtists = data.galleryArtists.nodes;
+  const events = data.events.nodes;
+  const filteredEvents = events.filter(
+    (event) => event.featured === true,
+  );
+  const featuredEvents = filteredEvents.map((event) => {
+    let featuredImages = [];
+    featuredImages = event.media.mediaList.filter(
+      (media) => media.featured === true,
+    );
+
+    return { ...event, media: featuredImages };
+  });
+
   return (
     <Grid style={{ maxWidth: '100vw' }}>
       <Hero heroImage={data.heroImage.childImageSharp.fluid} />
@@ -159,7 +182,7 @@ function Home() {
         >
           Cocoonfly Latest Events
         </Header>
-        <Events events={data.events.nodes} />
+        <Events events={featuredEvents} />
         <Button
           as={Link}
           to="/events"
