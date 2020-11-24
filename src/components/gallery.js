@@ -30,19 +30,6 @@ function Gallery({ artists }) {
             </Header>
           </Card.Header>
         </Card.Content>
-        {/* <Card.Content>
-            <figure key={artist.id}>
-              <Image
-                key={artist.id}
-                fluid={artist.artistImg.childImageSharp.fluid}
-              />
-              <figcaption>
-                <Link to={`/artists/${artist.slug}`}>
-                  {artist.name}
-                </Link>
-              </figcaption>
-            </figure>
-          </Card.Content> */}
         <Card.Content>
           <Carousel photos={photos} style={{ width: '100%' }} />
         </Card.Content>

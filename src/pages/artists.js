@@ -32,7 +32,7 @@ function ArtistsPage() {
   return (
     <Layout>
       <Seo title="cocoonfly.com artists" />
-      <Segment style={{ marginTop: '45px' }}>
+      <Segment style={{ width: 'auto', marginTop: '45px' }}>
         <Header
           as="h1"
           content="All Cocoonfly Artists"
@@ -45,7 +45,19 @@ function ArtistsPage() {
             borderRadius: '3px',
           }}
         />
-        <Artists artists={data.artists.nodes} />
+
+        <div
+          style={{
+            width: '100%',
+            display: 'grid',
+            gridTemplateColumns:
+              'repeat(auto-fit, minmax(300px, 1fr))',
+            justifyContent: 'center',
+            columnGap: '15px',
+          }}
+        >
+          <Artists artists={data.artists.nodes} />
+        </div>
       </Segment>
     </Layout>
   );

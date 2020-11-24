@@ -15,10 +15,18 @@ function Artist({ artist }) {
   );
   return (
     <Container
+      className="featured-artist"
       textAlign="center"
-      style={{ width: '100%', marginBottom: '20px' }}
+      style={{
+        width: '100%',
+        marginBottom: '20px',
+        marginLeft: '0',
+        marginRight: '0',
+      }}
+      // style={{ width: '100%', marginBottom: '20px' }}
     >
       {/* <Segment style={{ width: '100%' }}> */}
+      {/* <Card> */}
       <Card style={{ width: '100%' }}>
         <Card.Content>
           <Card.Header>
@@ -26,7 +34,8 @@ function Artist({ artist }) {
           </Card.Header>
         </Card.Content>
         <Card.Content>
-          <figure style={{ width: '75vw' }}>
+          <figure>
+            {/* <figure style={{ width: '75vw' }}> */}
             <Image
               fluid={artist.artistImg.childImageSharp.fluid}
               style={{ height: 'auto', textAlign: 'center' }}

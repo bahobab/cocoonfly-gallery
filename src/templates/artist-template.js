@@ -65,19 +65,34 @@ function artistPage({ data }) {
               borderRadius: '3px',
             }}
           >
-            Artist's Work
+            {name.split(' ')[0]}
+            's Work
           </Header>
-          <Card style={{ width: '100%' }}>
-            <Card.Content textAlign="center">
-              <Card.Header textAlign="center">
-                <Header>{name}</Header>
-              </Card.Header>
-            </Card.Content>
-            <Card.Content textAlign="center">
-              <p>{bio}</p>
-            </Card.Content>
-          </Card>
-          <Carousel photos={photos} />
+          <div
+            style={{
+              width: '100%',
+              display: 'grid',
+              // flexWrap: 'wrap',
+              gridTemplateColumns:
+                'repeat(auto-fit, minmax(100px,300px) 1fr)',
+              columnGap: '15px',
+              // gridAutoFlow: 'auto',
+            }}
+          >
+            <Card style={{ width: 'auto' }}>
+              <Card.Content textAlign="center">
+                <Card.Header textAlign="center">
+                  <Header>{name}</Header>
+                </Card.Header>
+              </Card.Content>
+              <Card.Content textAlign="center">
+                <p className="artist-bio">{bio}</p>
+              </Card.Content>
+            </Card>
+            <Segment>
+              <Carousel photos={photos} />
+            </Segment>
+          </div>
         </Segment>
       </Container>
     </Layout>

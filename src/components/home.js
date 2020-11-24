@@ -94,7 +94,7 @@ export const query = graphql`
         slug
         artistImg {
           childImageSharp {
-            fluid {
+            fluid(maxHeight: 480) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -153,7 +153,7 @@ function Home() {
         </Header>
         <Message>
           <MessageContent style={{ marginTop: '10px' }}>
-            <p>
+            <p className="who-we-are">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -182,7 +182,17 @@ function Home() {
         >
           Cocoonfly Latest Events
         </Header>
-        <Events events={featuredEvents} />
+        <div
+          className=""
+          style={{
+            width: '100%',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+          }}
+        >
+          <Events events={featuredEvents} />
+        </div>
         <Button
           as={Link}
           to="/events"
@@ -207,7 +217,9 @@ function Home() {
         >
           Cocoonfly Featured Artists
         </Header>
-        <Artists artists={galleryArtists} />
+        <div className="featured-artists">
+          <Artists artists={galleryArtists} />
+        </div>
         <Button
           as={Link}
           to="/artists"

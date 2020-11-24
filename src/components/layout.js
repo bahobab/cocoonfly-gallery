@@ -31,7 +31,7 @@ function Layout({ children }) {
       <div className="app" style={{ maxWidth: '100vw' }}>
         <Header />
         <Grid>
-          <main style={{ maxWidth: '100%' }}>{children}</main>
+          <main style={{ width: '100%' }}>{children}</main>
         </Grid>
         <Footer style={{ width: '100%' }} />
       </div>

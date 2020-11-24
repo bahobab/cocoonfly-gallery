@@ -12,4 +12,33 @@
     margin: auto !important;
     /*margin-top: 3rem !; */
   }
+
+  .artist-bio,
+  .who-we-are {
+    padding: 0 8rem;
+  }
+
+  .featured-artist {
+    width: auto;
+  }
+
+  .gatsby-image-wrapper {
+  }
+
+  .heroSection {
+    /* height: 600px; */
+  }
+}
+
+.featured-artists {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media screen and (min-width: 769px) {
+  .featured-artists {
+    width: 35%;
+  }
 }

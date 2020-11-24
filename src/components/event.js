@@ -10,10 +10,10 @@ function Event({ event }) {
   const images = photoMapper(media);
 
   return (
-    <Container style={{ width: '100vw' }}>
+    <Container style={{ marginLeft: '0', marginRight: '0' }}>
       {/* <Segment textAlign='center' style={{ width: '100%', textAlign: 'center' }}> */}
-      <Card style={{ width: '100%', marginTop: '12px' }}>
-        <Card.Content style={{ maxWidth: '100%' }}>
+      <Card style={{ width: 'auto' }}>
+        <Card.Content>
           <Card.Header>
             <Header as="h3" textAlign="center">
               <Link to={`/events/${slug}`}>
@@ -30,7 +30,7 @@ function Event({ event }) {
         </Card.Content>
         <Card.Content textAlign="center">{description}</Card.Content>
         <Card.Content>
-          <Carousel photos={images} style={{ width: '100%' }} />
+          <Carousel photos={images} />
         </Card.Content>
       </Card>
       {/* </Segment> */}
